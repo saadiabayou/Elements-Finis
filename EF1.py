@@ -23,11 +23,12 @@ t=list(range(10))
 x=[]
 print("t = ",t)
 
-# fonction dérivée - (dx(t)/dt)=-x0sin(wt)
+# fonction x(t)=x0cos(wt)
 for tn in t: 
-    xn=-x0*np.sin(w*tn)
+    xn=x0*np.cos(w*tn)
     x.append(xn)
 print("\nx=",x)
+
 # fonction delta x et delta t
 dx=np.zeros((len(x)-1))
 dt=np.zeros((len(t)-1))
@@ -37,6 +38,7 @@ dt=np.zeros((len(t)-1))
 ldx=[]
 ldt=[]
 ldf=[]
+
 # Boucle de calcul delta x 
 for i in range(len(x)-1):
 #    print("\nxi=",x[i])
@@ -54,12 +56,14 @@ for n in range(len(t)-1):
     ldt.append(dt[n])
 # Liste delta t
 print("\nldt=",ldt)
+
+# fonction dérivée - (dx(t)/dt)=-x0sin(wt)
 # Boucle imbriquée -> calcul de la dérivée discrétisée df 
 for dx in ldx :
     for dt in ldt :
         df=(dx/dt)
     ldf.append(df)
-
+# Liste df 
 print("\nldf=",ldf)
 
 
